@@ -1,0 +1,32 @@
+{
+  "name": "es2x",
+  "version": "1.0.0",
+  "description": "Ecma Script Helpers, Tools, Components, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigocipriani/es2x.git"
+  },
+  "keywords": [
+    "javascript",
+    "es2015",
+    "es2016",
+    "react",
+    "tools",
+    "components",
+    "helpers",
+    "utils",
+    "js",
+    "node",
+    "npm"
+  ],
+  "author": "Rodrigo Cipriani da Rosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodrigocipriani/es2x/issues"
+  },
+  "homepage": "https://github.com/rodrigocipriani/es2x#readme"
+}
