@@ -13,7 +13,7 @@ class Row extends Component {
 }
 
 Row.propTypes = {
-  children : PropTypes.object,
+  children : PropTypes.any,
   className: PropTypes.string
 };
 
