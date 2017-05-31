@@ -1,6 +1,8 @@
-node_modules
-*.log*
+.settings
 .idea
-dist
-webpack-dev-server
-yarn.lock
+.vscode
+public
+jsconfig.json
+npm-debug.log
+node_modules
+lib
