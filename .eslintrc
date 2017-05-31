@@ -29,6 +29,7 @@ rules:
   react/jsx-space-before-closing: ['error', 'never']
   react/jsx-indent: ['error', 2]
   react/jsx-indent-props: ['error', 2]
+  linebreak-style: ["error", "windows"]
   key-spacing: ["error", {
       "multiLine": {
           "beforeColon": false,
