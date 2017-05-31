@@ -1,6 +1,7 @@
-# es2x
-Ecma Script Helpers, Tools, Components, etc.
+# es2x - Ecma Script 2xxx 
+Javascript Helpers, Tools, Components, etc.
 
 ## TODOs
 
-- Publicar no npm
+- Create How to use in README
+- ...
