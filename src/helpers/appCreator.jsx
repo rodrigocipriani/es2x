@@ -9,10 +9,9 @@ import 'babel-polyfill';
 
 const customHistory = createBrowserHistory();
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 export default (Routes, store, props = {}) => {
   const rootContainer = props.rootContainer || 'root';
+  const isProduction = props.isProduction || true;
 
   ReactDOM.render(
     <Provider store={ store }>
