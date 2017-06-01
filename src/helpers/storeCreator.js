@@ -2,29 +2,27 @@ import {
   combineReducers,
   createStore,
   applyMiddleware,
-  compose
+  compose,
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-
+import { storeActionTypes } from './';
 
 const storeCreator = (reducers, props) => {
   const { isProduction, showLoggers } = props;
-  let { loggerOptions } = props;
-  const reducersObj = combineReducers(reducers);
+  let { loggerOptions }               = props;
+  const reducersObj                   = combineReducers(reducers);
   if (showLoggers !== undefined) {
     loggerOptions = { ...loggerOptions, predicate: () => showLoggers };
   }
   const loggerMiddleware = createLogger(loggerOptions);
 
-  const store = isProduction ?
-      createStore(
-        reducersObj,
-          applyMiddleware(thunkMiddleware)
-      )
-      :
-      createStore(
-        reducersObj,
+  const store = isProduction ? createStore(
+      reducersObj,
+      applyMiddleware(thunkMiddleware)
+  )
+      : createStore(
+          reducersObj,
           compose(
               applyMiddleware(
                   thunkMiddleware,
@@ -48,20 +46,33 @@ const storeCreator = (reducers, props) => {
    * */
   store.createAssyncAction = (type, promise, args) => {
     store.dispatch({
-      type: `${ type }_START`
+      type   : storeActionTypes.REQUEST_START,
+      payload: { type },
     });
+    // store.dispatch({
+    //   type
+    // });
+
     promise.then(result => {
       store.dispatch({
-        type   : `${ type }_SUCCESS`,
+        type   : storeActionTypes.REQUEST_SUCCESS,
+        payload: { type, data: result.data || result },
+      });
+      store.dispatch({
+        type,
         payload: result.data || result,
         ...args,
       });
     }).catch(err => {
       store.dispatch({
-        type : `${ type }_ERROR`,
-        msg  : err.msg,
-        error: err
+        type   : storeActionTypes.REQUEST_ERROR,
+        payload: { type, message: err.msg, error: err },
       });
+      // store.dispatch({
+      //   type,
+      //   msg  : err.msg,
+      //   error: err
+      // });
     });
   };
 
