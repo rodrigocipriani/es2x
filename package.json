@@ -1,6 +1,6 @@
 {
   "name": "es2x",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Ecma Script Helpers, Tools, Components, etc.",
   "main": "index.js",
   "scripts": {
