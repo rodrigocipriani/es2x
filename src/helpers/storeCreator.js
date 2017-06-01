@@ -8,10 +8,10 @@ import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 
-const storeCreator = (reducersAttr, props) => {
+const storeCreator = (reducers, props) => {
   const { isProduction, showLoggers } = props;
   let { loggerOptions } = props;
-  const reducers = combineReducers(reducersAttr);
+  const reducersObj = combineReducers(reducers);
   if (showLoggers !== undefined) {
     loggerOptions = { ...loggerOptions, predicate: () => showLoggers };
   }
@@ -19,12 +19,12 @@ const storeCreator = (reducersAttr, props) => {
 
   const store = isProduction ?
       createStore(
-          reducers,
+        reducersObj,
           applyMiddleware(thunkMiddleware)
       )
       :
       createStore(
-          reducers,
+        reducersObj,
           compose(
               applyMiddleware(
                   thunkMiddleware,
@@ -38,10 +38,32 @@ const storeCreator = (reducersAttr, props) => {
   // Hot reloading reducers is now explicit (#80)
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept(reducers, () => {
-      store.replaceReducer(reducers);
+    module.hot.accept(reducersObj, () => {
+      store.replaceReducer(reducersObj);
     });
   }
+
+  /**
+   * todo: Maybe that's not the better way
+   * */
+  store.createAssyncAction = (type, promise, args) => {
+    store.dispatch({
+      type: `${ type }_START`
+    });
+    promise.then(result => {
+      store.dispatch({
+        type   : `${ type }_SUCCESS`,
+        payload: result.data || result,
+        ...args,
+      });
+    }).catch(err => {
+      store.dispatch({
+        type : `${ type }_ERROR`,
+        msg  : err.msg,
+        error: err
+      });
+    });
+  };
 
   return store;
 };
