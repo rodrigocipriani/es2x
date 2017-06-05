@@ -6,13 +6,6 @@ import bodyConnector from './bodyConnector';
 
 class BodyContainer extends Component {
 
-  componentWillReceiveProps(nextProps) {
-    const usuario = nextProps.usuario;
-    if (usuario === null) {
-      nextProps.callbackNotLogged();
-    }
-  }
-
   render() {
     const { children, msgs } = this.props;
 
@@ -32,16 +25,12 @@ class BodyContainer extends Component {
 
 BodyContainer.propTypes = {
   children         : PropTypes.element, // todo : Implementar apra ser element ou string
-  msgs             : PropTypes.array,
-  usuario          : PropTypes.object,
-  callbackNotLogged: PropTypes.func,
+  msgs             : PropTypes.array
 };
 
 BodyContainer.defaultProps = {
   children         : null,
-  msgs             : [],
-  usuario          : null,
-  callbackNotLogged: () => {},
+  msgs             : []
 };
 
 export default bodyConnector(BodyContainer);

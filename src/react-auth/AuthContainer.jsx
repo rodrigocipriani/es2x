@@ -3,22 +3,18 @@ import PropTypes from 'prop-types';
 
 class AuthContainer extends PureComponent {
 
-  testIsLogado = () => {
-    if (true) {
-      this.props.callbackIsLogged();
-    } else {
-      this.props.callbackNotLogged();
-    }
+  isLoggedTest = () => {
+    return false;
   };
 
   render() {
-    const { children, authNeededTest, callbackRequireLogin } = this.props;
+    const { children, authNeeded, onRequireAuth, isLogged } = this.props;
 
-    if (authNeededTest) {
-      if (this.testIsLogado) {
+    if (authNeeded) {
+      if (isLogged) {
         return children;
       }
-      callbackRequireLogin();
+      onRequireLogin();
       return null;
     }
     return children;
@@ -26,18 +22,17 @@ class AuthContainer extends PureComponent {
 }
 
 AuthContainer.propTypes = {
-  children            : PropTypes.any, // todo : Implementar apra ser element ou string
-  authNeededTest      : PropTypes.func,
-  callbackIsLogged    : PropTypes.func,
-  callbackNotLogged   : PropTypes.func,
-  callbackRequireLogin: PropTypes.func
+  children      : PropTypes.any,
+  authNeeded    : PropTypes.bool,
+  isLogged      : PropTypes.bool,
+  onRequireAuth: PropTypes.func
 };
 
 AuthContainer.defaultProps = {
-  children         : null,
-  authNeededTest   : null,
-  callbackIsLogged : null,
-  callbackNotLogged: null
+  children      : null,
+  authNeeded    : false,
+  isLogged      : false,
+  onRequireAuth: () => {}
 };
 
 export default AuthContainer;
