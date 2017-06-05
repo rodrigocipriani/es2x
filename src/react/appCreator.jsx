@@ -9,7 +9,7 @@ import 'babel-polyfill';
 
 const customHistory = createBrowserHistory();
 
-export default (Routes, store, props = {}) => {
+export default (App, store, props = {}) => {
   const rootContainer = props.rootContainer || 'root';
   const isProduction = props.isProduction || true;
 
@@ -17,9 +17,9 @@ export default (Routes, store, props = {}) => {
     <Provider store={ store }>
       <Router history={ customHistory }>
         { isProduction ?
-          <Routes/> :
+          <App/> :
           <div>
-            <Routes/>
+            <App/>
             {/* <div>Desenvolvimento</div>*/}
           </div> }
       </Router>

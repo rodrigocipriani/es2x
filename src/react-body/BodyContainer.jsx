@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { SnackBarMsgs } from '../react-components';
+import Snackbar from 'material-ui/Snackbar';
+// import { SnackBarMsgs } from '../react-components';
 import { DefaultTheme } from '../react-theme';
-import bodyConnector from './bodyConnector';
 
 class BodyContainer extends Component {
 
   render() {
-    const { children, msgs } = this.props;
+    const { children, messages } = this.props;
+
+    console.log('$$$$ messages', messages);
+
+    const isOpemMessages = messages && messages.length > 0;
 
     return (
       <DefaultTheme>
@@ -15,7 +19,13 @@ class BodyContainer extends Component {
 
           {children}
 
-          <SnackBarMsgs msgs={ msgs }/>
+          {/* <SnackBarMsgs msgs={ messages }/>*/}
+          <Snackbar
+            open={ isOpemMessages }
+            message={ messages[0] }
+            autoHideDuration={ 4000 }
+            // onRequestClose={ this.handleRequestClose }
+          />
 
         </div>
       </DefaultTheme>
@@ -24,13 +34,13 @@ class BodyContainer extends Component {
 }
 
 BodyContainer.propTypes = {
-  children         : PropTypes.element, // todo : Implementar apra ser element ou string
-  msgs             : PropTypes.array
+  children: PropTypes.element, // todo : Implementar apra ser element ou string
+  messages: PropTypes.array
 };
 
 BodyContainer.defaultProps = {
-  children         : null,
-  msgs             : []
+  children: null,
+  messages: []
 };
 
-export default bodyConnector(BodyContainer);
+export default BodyContainer;
