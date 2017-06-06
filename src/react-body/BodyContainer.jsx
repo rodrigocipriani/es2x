@@ -9,9 +9,7 @@ class BodyContainer extends Component {
   render() {
     const { children, messages } = this.props;
 
-    console.log('$$$$ messages', messages);
-
-    const isOpemMessages = messages && messages.length > 0;
+    const isOpenMessages = messages && messages.length > 0;
 
     return (
       <DefaultTheme>
@@ -20,12 +18,15 @@ class BodyContainer extends Component {
           {children}
 
           {/* <SnackBarMsgs msgs={ messages }/>*/}
-          <Snackbar
-            open={ isOpemMessages }
-            message={ messages[0] }
-            autoHideDuration={ 4000 }
-            // onRequestClose={ this.handleRequestClose }
-          />
+          {isOpenMessages &&
+            <Snackbar
+              open={ isOpenMessages }
+              message={ messages[0] }
+              autoHideDuration={ 4000 }
+                // onRequestClose={ this.handleRequestClose }
+            />
+          }
+
 
         </div>
       </DefaultTheme>
