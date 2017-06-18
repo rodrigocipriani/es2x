@@ -1,6 +1,6 @@
 {
   "name": "es2x",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Ecma Script Helpers, Tools, Components, etc.",
   "main": "index.js",
   "scripts": {
@@ -42,10 +42,14 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "autoprefixer": "^7.1.1",
+    "webpack-dashboard": "^0.4.0",
+    "precss": "^1.4.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "html-webpack-plugin": "^2.28.0"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.7.2",
     "babel-eslint": "^7.1.0",
@@ -65,10 +69,6 @@
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.7.1",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "html-webpack-plugin": "^2.28.0",
-    "precss": "^1.4.0",
-    "webpack-dashboard": "^0.4.0"
+    "eslint-plugin-react": "^6.7.1"
   }
 }
