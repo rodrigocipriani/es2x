@@ -7,9 +7,16 @@ import { DefaultTheme } from '../react-theme';
 class BodyContainer extends Component {
 
   render() {
-    const { children, messages } = this.props;
+    const { children, message } = this.props;
 
-    const isOpenMessages = messages && messages.length > 0;
+    let messageText = null;
+    if (message) {
+      messageText = message;
+      if (typeof messageText !== 'string') {
+        messageText = messageText.text;
+      }
+    }
+    const isOpenMessages = !!messageText;
 
     return (
       <DefaultTheme>
@@ -19,15 +26,13 @@ class BodyContainer extends Component {
 
           {/* <SnackBarMsgs msgs={ messages }/>*/}
           {isOpenMessages &&
-            <Snackbar
-              open={ isOpenMessages }
-              message={ messages[0] }
-              autoHideDuration={ 4000 }
-                // onRequestClose={ this.handleRequestClose }
-            />
+          <Snackbar
+            open={ isOpenMessages }
+            message={ messageText }
+            // autoHideDuration={ 4000 }
+            // onRequestClose={ this.handleRequestClose }
+          />
           }
-
-
         </div>
       </DefaultTheme>
     );
@@ -36,12 +41,12 @@ class BodyContainer extends Component {
 
 BodyContainer.propTypes = {
   children: PropTypes.element, // todo : Implementar apra ser element ou string
-  messages: PropTypes.array
+  message : PropTypes.any
 };
 
 BodyContainer.defaultProps = {
   children: null,
-  messages: []
+  message : null
 };
 
 export default BodyContainer;
