@@ -14,7 +14,7 @@ class AuthContainer extends PureComponent {
       if (isLogged) {
         return children;
       }
-      onRequireLogin();
+      onRequireAuth();
       return null;
     }
     return children;
