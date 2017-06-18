@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 const css = {
@@ -11,7 +11,7 @@ const css = {
 };
 
 // todo - implementar que no onmousehover o contador de tempo fica parado e a msg não fecha
-class SnackBarMsgs extends Component {
+class SnackBarMsgs extends PureComponent {
   static propTypes = {
         // children: PropTypes.object,
     msgs      : PropTypes.array.isRequired,
@@ -75,7 +75,7 @@ class SnackBarMsgs extends Component {
   }
 }
 
-class Snack extends Component {
+class Snack extends PureComponent {
 
   static propTypes = {
     type       : PropTypes.string,

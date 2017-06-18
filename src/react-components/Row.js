@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class Row extends Component {
+class Row extends PureComponent {
 
   render() {
     const { children, className, ...reactProps } = this.props;
