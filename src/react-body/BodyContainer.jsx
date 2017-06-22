@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Snackbar from 'material-ui/Snackbar';
 // import { SnackBarMsgs } from '../react-components';
 import { DefaultTheme } from '../react-theme';
 
-class BodyContainer extends Component {
+class BodyContainer extends PureComponent {
 
   render() {
     const { children, message } = this.props;
