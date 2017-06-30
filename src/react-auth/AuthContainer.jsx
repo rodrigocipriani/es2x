@@ -3,17 +3,10 @@ import PropTypes from 'prop-types';
 
 class AuthContainer extends PureComponent {
 
-  isLoggedTest = () => {
-    return false;
-  };
-
   render() {
     const { children, authNeeded, onRequireAuth, isLogged } = this.props;
 
-    if (authNeeded) {
-      if (isLogged) {
-        return children;
-      }
+    if (authNeeded && !isLogged) {
       onRequireAuth();
       return null;
     }
