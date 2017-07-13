@@ -9,8 +9,8 @@ Run `npm i --save es2x`
 
 - Clone this repo
 - Run `npm i`
-- To Build: `gulp build`
-- To run with watcher: `gulp`
+- To Build: `npm run build`
+- To run with watcher: `npm start`
 
 ## TODOs
 
