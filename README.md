@@ -3,13 +3,17 @@ Javascript Helpers, Tools, Components, etc.
 
 ## How to use
 
-`npm i --save es2x`
+Run `npm i --save es2x`
 
-or
+## How to develop
 
-`yarn add es2x`
+- Clone this repo
+- Run `npm i`
+- To Build: `gulp build`
+- To run with watcher: `gulp`
 
 ## TODOs
 
-- Create How to use in README
+- Improve How to use in README
+- Create modules documentation
 - ...

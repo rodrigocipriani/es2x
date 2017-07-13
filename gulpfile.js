@@ -33,3 +33,4 @@ gulp.task('babel:watch', ['babel'], () => {
 });
 
 gulp.task('default', ['sass:watch', 'babel:watch']);
+gulp.task('build', ['sass', 'babel']);

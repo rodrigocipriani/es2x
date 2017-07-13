@@ -1,0 +1,24 @@
+@import "../variables";
+
+$paddingLeft: 300;
+
+@media #{$small-and-down} {
+  // styles for small screens and down
+}
+@media #{$medium-and-up} {
+  // styles for medium screens and larger
+}
+@media #{$medium-and-down} {
+}
+@media #{$large-and-up} {
+  // styles for large screens and up
+  .SideNav {
+    .isMenuVisible {
+      padding-left: unquote( $paddingLeft + 'px');
+      max-width: unquote( (1200 + $paddingLeft) + 'px');
+    }
+  }
+}
+@media #{$extra-large-and-up} {
+  // styles for extra large screens and up
+}
