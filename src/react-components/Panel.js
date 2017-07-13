@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import 'materialize-css/bin/materialize.css';
 
 // todo : Fazer animação quando abrir e fechar sem Jquery
 class Panel extends PureComponent {
