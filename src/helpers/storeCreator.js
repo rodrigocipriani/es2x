@@ -46,33 +46,26 @@ const storeCreator = (reducers, props) => {
    * */
   store.createAssyncAction = (type, promise, args) => {
     store.dispatch({
-      type   : storeActionTypes.REQUEST_START,
-      payload: { type },
+      type,
+      pending: true
     });
-    // store.dispatch({
-    //   type
-    // });
 
     promise.then(result => {
-      store.dispatch({
-        type   : storeActionTypes.REQUEST_SUCCESS,
-        payload: { type, data: result.data || result },
-      });
+      // store.dispatch({
+      //   type   : storeActionTypes.REQUEST_SUCCESS,
+      //   payload: { type, data: result.data || result },
+      // });
       store.dispatch({
         type,
         payload: result.data || result,
-        ...args,
+        ...args
       });
     }).catch(err => {
       store.dispatch({
         type   : storeActionTypes.REQUEST_ERROR,
         payload: { type, message: err.msg, error: err },
+        ...args
       });
-      // store.dispatch({
-      //   type,
-      //   msg  : err.msg,
-      //   error: err
-      // });
     });
   };
 
