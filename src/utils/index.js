@@ -1,3 +1,4 @@
 const configCreator = require('./configCreator');
+const webpackCreator = require('./webpackCreator');
 
-module.exports = { configCreator };
+module.exports = { configCreator, webpackCreator };

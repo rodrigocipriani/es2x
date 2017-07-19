@@ -1,6 +1,6 @@
 {
   "name": "es2x",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "description": "Ecma Script Helpers, Tools, Components, etc.",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,11 @@
   },
   "homepage": "https://github.com/rodrigocipriani/es2x#readme",
   "dependencies": {
+    "autoprefixer": "^7.1.2",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "html-webpack-plugin": "^2.29.0",
     "material-ui": "^0.18.1",
+    "precss": "^1.4.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -44,12 +48,9 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "webpack": "^2.6.1",
-    "autoprefixer": "^7.1.1",
+    "webpack": "^2.7.0",
+    "webpack-bundle-analyzer": "^2.8.3",
     "webpack-dashboard": "^0.4.0",
-    "precss": "^1.4.0",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "html-webpack-plugin": "^2.28.0",
     "why-did-you-update": "0.0.8"
   },
   "devDependencies": {

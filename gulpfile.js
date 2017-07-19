@@ -14,7 +14,7 @@ gulp.task('sass', () => {
     .pipe(gulp.dest(distFiles));
 });
 
-gulp.task('sass:watch', ['sass'], () => {
+gulp.task('sass:watch', () => {
   gulp.watch(sassFiles, ['sass']);
 });
 
@@ -28,9 +28,16 @@ gulp.task('babel', () => {
     .pipe(gulp.dest(distFiles));
 });
 
-gulp.task('babel:watch', ['babel'], () => {
+gulp.task('babel:watch', () => {
   gulp.watch([babelFiles], ['babel']);
 });
 
-gulp.task('default', ['sass:watch', 'babel:watch']);
 gulp.task('build', ['sass', 'babel']);
+gulp.task('default', () => {
+  gulp.start('build', () => {
+    console.log('build finished, starting watches...');
+    gulp.start(['sass:watch', 'babel:watch'], () => {
+      console.log('Watching...');
+    });
+  });
+});
