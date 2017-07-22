@@ -1,12 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Snackbar from 'material-ui/Snackbar';
-// import { SnackBarMsgs } from '../react-components';
-import { DefaultTheme } from '../react-theme';
+import { DefaultTheme } from '../../react-theme';
 import Body from './Body';
 import Message from './Message';
 
 class BodyContainer extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = { open: false };
+  }
+
+  handleToggle = () => this.setState({ open: !this.state.open });
 
   render() {
     const { children, message } = this.props;
@@ -14,7 +19,6 @@ class BodyContainer extends PureComponent {
     return (
       <DefaultTheme>
         <div className='BodyContainer'>
-
           <Body>{children}</Body>
           <Message message={ message }/>
         </div>
@@ -25,12 +29,12 @@ class BodyContainer extends PureComponent {
 
 BodyContainer.propTypes = {
   children: PropTypes.element, // todo : Implementar apra ser element ou string
-  message : PropTypes.any,
+  message : PropTypes.any
 };
 
 BodyContainer.defaultProps = {
   children: null,
-  message : null,
+  message : null
 };
 
 export default BodyContainer;

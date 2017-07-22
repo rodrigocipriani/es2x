@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as BodyContainer } from './Body/BodyContainer';
 export { default as Card } from './Card';
 export { default as Col } from './Col';
 export { default as Container } from './Container';
@@ -14,3 +15,6 @@ export { default as SideNav } from './SideNav';
 export { default as TextField } from './TextField';
 export { default as Title } from './Title';
 export { default as SnackBarMsgs } from './SnackBarMsgs';
+export { default as Navigation } from './Navigation';
+export { default as MenuItem } from 'material-ui/MenuItem';
+export { default as Divider } from 'material-ui/Divider';

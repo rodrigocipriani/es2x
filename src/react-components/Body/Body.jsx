@@ -11,7 +11,7 @@ class Body extends PureComponent {
     const { children } = this.props;
 
     return (
-      <div className='BodyContainer'>
+      <div>
         {children}
       </div>
     );
@@ -19,7 +19,7 @@ class Body extends PureComponent {
 }
 
 Body.propTypes = {
-  children: PropTypes.element, // todo : Implementar apra ser element ou string
+  children: PropTypes.element
 };
 
 Body.defaultProps = {
