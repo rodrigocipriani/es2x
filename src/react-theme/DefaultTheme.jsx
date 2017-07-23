@@ -7,7 +7,7 @@ import './normalize.css';
 import './DefaultTheme.css';
 
 // todo : remove tap delay, essential for MaterialUI to work properly
-// injectTapEventPlugin();
+injectTapEventPlugin();
 
 class DefaultTheme extends Component {
 

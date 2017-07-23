@@ -1,36 +1,44 @@
 @import "../variables";
 
-span.badge {
-  line-height: inherit !important;
-  height: inherit !important;
+.DefaultTheme {
+
+  a {
+    text-decoration: none;
+  }
+
+  span.badge {
+    line-height: inherit !important;
+    height: inherit !important;
+  }
+
+  .collapsible-header:before {
+    font-family: "FontAwesome";
+    content: "\f105";
+    float: right;
+    color: #9e9e9e;
+    font-size: 18px;
+  }
+
+  .collapsible-header.active:before {
+    content: "\f107";
+  }
+  .container {
+    width: 90% !important;
+  }
+
+  @media #{$small-and-down} {
+    // styles for small screens and down
+  }
+  @media #{$medium-and-up} {
+    // styles for medium screens and larger
+  }
+  @media #{$medium-and-down} {
+  }
+  @media #{$large-and-up} {
+    // styles for large screens and up
+  }
+  @media #{$extra-large-and-up} {
+    // styles for extra large screens and up
+  }
 }
 
-.collapsible-header:before {
-  font-family: "FontAwesome";
-  content: "\f105";
-  float: right;
-  color: #9e9e9e;
-  font-size: 18px;
-}
-
-.collapsible-header.active:before {
-  content: "\f107";
-}
-.container {
-  width: 90% !important;
-}
-
-@media #{$small-and-down} {
-  // styles for small screens and down
-}
-@media #{$medium-and-up} {
-  // styles for medium screens and larger
-}
-@media #{$medium-and-down} {
-}
-@media #{$large-and-up} {
-  // styles for large screens and up
-}
-@media #{$extra-large-and-up} {
-  // styles for extra large screens and up
-}

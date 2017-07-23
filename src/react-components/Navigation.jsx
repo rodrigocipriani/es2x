@@ -19,7 +19,7 @@ class Navigation extends PureComponent {
 
     this.state = {
       isLargeScreen,
-      isOpen: false,
+      isOpen: isLargeScreen,
       width : 0
     };
   }
