@@ -6,12 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './normalize.css';
 import './DefaultTheme.css';
 
-// TODO: aqui está a única dependência com o materialize, tentar remover do projeto
-import 'materialize-css/dist/css/materialize.min.css';
-// import 'materialize-css/dist/js/materialize.min';
-
 // todo : remove tap delay, essential for MaterialUI to work properly
-injectTapEventPlugin();
+// injectTapEventPlugin();
 
 class DefaultTheme extends Component {
 
@@ -19,7 +15,7 @@ class DefaultTheme extends Component {
     const { children } = this.props;
 
     return (
-      <div className="DefaultTheme">
+      <div className='DefaultTheme'>
         <MuiThemeProvider muiTheme={ getMuiTheme() }>
           {children}
         </MuiThemeProvider>

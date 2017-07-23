@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import './Navigation.css';
+import { Card, CardMedia } from 'material-ui/Card';
 import Sidebar from 'react-sidebar';
-import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
+import './Navigation.css';
 
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
 
 const LARGE_SCREEN_WIDTH = 933;
 const MENU_WIDTH         = 300;
@@ -105,9 +103,7 @@ class Navigation extends PureComponent {
           open={ isOpen }
           onSetOpen={ state => this.setState({ isOpen: state }) }
         >
-          <div
-            className='app-content'
-          >
+          <div className='app-content'>
             { children }
           </div>
         </Sidebar>
