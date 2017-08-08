@@ -1,56 +1,51 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import Toggle from 'material-ui/Toggle';
+import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
+
 
 class CardComponent extends PureComponent {
 
   render() {
-    const { children, className, title, actions } = this.props;
+    const { children, title, actions, subheader, avatar, showExpandableButton, actAsExpander } = this.props;
 
     return (
-      <Card expanded={ true } onExpandChange={ () => console.log('teste') } >
+      <Card>
         <CardHeader
-          title={ title }
-          subtitle=''
-          avatar=''
-          actAsExpander={ false }
-          showExpandableButton={ false }
+          title={ <div>{title}</div> }
+          subheader={ subheader }
+          avatar={ avatar }
+          // actAsExpander={ actAsExpander }
+          // showExpandableButton={ showExpandableButton }
         />
-        {children}
+        <CardContent>
+          {children}
+        </CardContent>
         <CardActions>
           {actions}
         </CardActions>
       </Card>
     );
-
-    return (
-      <div className={ ['card', className].join(' ') }>
-        <div className='card-content'>
-          <span className='card-title'>{title}</span>
-          {children}
-        </div>
-        <div className='card-action'>
-          {actions}
-        </div>
-      </div>
-    );
   }
 }
 
 CardComponent.propTypes = {
-  children : PropTypes.any,
-  className: PropTypes.string,
-  title    : PropTypes.string,
-  actions  : PropTypes.any
+  children            : PropTypes.any,
+  title               : PropTypes.any,
+  subheader           : PropTypes.any,
+  avatar              : PropTypes.any,
+  actions             : PropTypes.any,
+  showExpandableButton: PropTypes.bool,
+  actAsExpander       : PropTypes.bool
 };
 
 CardComponent.defaultProps = {
-  children : null,
-  className: '',
-  title    : '',
-  actions  : ''
+  children            : null,
+  title               : null,
+  subheader           : null,
+  avatar              : null,
+  actions             : '',
+  showExpandableButton: false,
+  actAsExpander       : false
 };
 
 export default CardComponent;

@@ -1,23 +1,43 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Grid from 'material-ui/Grid';
 
 class Col extends PureComponent {
 
   render() {
-    const { children, sizes } = this.props;
+    const { children, xs, sm, md, lg, xl } = this.props;
 
-    return <div className={ ['col', sizes].join(' ') }>{children}</div>;
+    return (
+      <Grid
+        item
+        xs={ xs }
+        sm={ sm }
+        md={ md }
+        lg={ lg }
+        xl={ xl }
+      >
+        {children}
+      </Grid>
+    );
   }
 }
-
+// xs, sm, md, lg, and xl.
 Col.propTypes = {
   children: PropTypes.any,
-  sizes   : PropTypes.string
+  xs      : PropTypes.number,
+  sm      : PropTypes.number,
+  md      : PropTypes.number,
+  lg      : PropTypes.number,
+  xl      : PropTypes.number
 };
 
 Col.defaultProps = {
   children: null,
-  sizes   : ''
+  xs      : 12,
+  sm      : 12,
+  md      : 12,
+  lg      : 12,
+  xl      : 12
 };
 
 export default Col;

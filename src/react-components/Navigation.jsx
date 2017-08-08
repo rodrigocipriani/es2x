@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardMedia } from 'material-ui/Card';
+// import { Card, CardMedia } from 'material-ui/Card';
+import Card, { CardActions, CardHeader, CardContent, CardMedia } from 'material-ui/Card';
 import Sidebar from 'react-sidebar';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
@@ -62,8 +63,8 @@ class Navigation extends PureComponent {
       <div className='Navigation'>
         <AppBar
           className='app-bar'
-          title={ topMenuTitle }
-          onLeftIconButtonTouchTap={ this.handleToggle }
+          // title={ topMenuTitle }
+          // onLeftIconButtonTouchTap={ this.handleToggle }
           style={ isOpen && isLargeScreen ? style.appBarMenuOpen : {} }
         />
         <Sidebar
@@ -72,21 +73,21 @@ class Navigation extends PureComponent {
               <Card>
                 <CardMedia
                   style={ { height: 150 } }
-                  overlayContentStyle={ { height: '100%', verticalAlign: 'bottom' } }
-                  overlayStyle={ {
-                    background        : `url(${ sideMenuHeaderBg })`,
-                    backgroundPosition: 'center',
-                    backgroundSize    : 'cover'
-                  } }
-                  overlay={
-                    <div className='avatarInfo'>
-                      <Avatar src={ avatarImg }/>
-                      <br/>
-                      <a href='#!name'><span className='white-text name'>{avatarTitle}</span></a>
-                      <br/>
-                      <a href='#!email'><span className='white-text email'>{avatarSubTitle}</span></a>
-                    </div>
-                  }
+                  // overlayContentStyle={ { height: '100%', verticalAlign: 'bottom' } }
+                  // overlayStyle={ {
+                  //   background        : `url(${ sideMenuHeaderBg })`,
+                  //   backgroundPosition: 'center',
+                  //   backgroundSize    : 'cover'
+                  // } }
+                  // overlay={
+                  //   <div className='avatarInfo'>
+                  //     <Avatar src={ avatarImg }/>
+                  //     <br/>
+                  //     <a href='#!name'><span className='white-text name'>{avatarTitle}</span></a>
+                  //     <br/>
+                  //     <a href='#!email'><span className='white-text email'>{avatarSubTitle}</span></a>
+                  //   </div>
+                  // }
                 >
                   {/* <img role='presentation' className='background-cover' src={ sideMenuHeaderBg }/>*/}
                 </CardMedia>

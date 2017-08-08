@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Grid from 'material-ui/Grid';
 
 class Row extends PureComponent {
 
   render() {
-    const { children, className, ...reactProps } = this.props;
+    const { children } = this.props;
 
-    const classNameProps = className ? `${ className } row` : 'row';
-
-    return <div { ...reactProps } className={ classNameProps }>{children}</div>;
+    return <Grid style={ { flexGrow: 1 } } container>{children}</Grid>;
   }
 }
 

@@ -1,19 +1,25 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Paper from 'material-ui/Paper';
+
 
 class Container extends PureComponent {
   render() {
-    const { children } = this.props;
+    const { children, elevation, className } = this.props;
 
-    return <div { ...this.props }>{children}</div>;
+    return <Paper className={ className } elevation={ elevation }>{children}</Paper>;
   }
 }
 Container.propTypes = {
-  children: PropTypes.any
+  children : PropTypes.any,
+  className: PropTypes.any,
+  elevation: PropTypes.number
 };
 
 Container.defaultProps = {
-  children: null
+  children : null,
+  className: null,
+  elevation: 1
 };
 
 export default Container;

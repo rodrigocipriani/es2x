@@ -1,10 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+// import { SpeedDial, SpeedDialItem } from 'react-mui-speeddial';
+
+// import ContentAdd from 'material-ui-icons/Add';
+// import NavigationClose from 'material-ui-icons/Close';
+// import NewPageIcon from 'material-ui-icons/NoteAdd';
 
 class FabButton extends PureComponent {
 
   render() {
-    const { color, label, onClick, children } = this.props;
+    const { options, color, label, onClick, children } = this.props;
+
+    console.log('options', options);
 
     const attrs = {
       color  : color || 'blue',
@@ -13,19 +20,53 @@ class FabButton extends PureComponent {
     };
 
     return (
-      <div onClick={ onClick } className='fixed-action-btn' style={ { zIndex: '9999' } }>
-        <a className={ ['btn-floating btn-large ', attrs.color].join(' ') }>
-          {attrs.label}
-        </a>
-        <ul>
-          {children}
-        </ul>
+      <div
+        className='SpeedDial'
+        style={ {
+          position: 'absolute',
+          bottom  : 15,
+          right   : 15
+        } }
+      >
+        fix Fab Button
+        {/*<SpeedDial*/}
+          {/*className='fab'*/}
+          {/*fabContentOpen={*/}
+            {/*'<ContentAdd/>'*/}
+        {/*}*/}
+          {/*fabContentClose={*/}
+            {/*'<NavigationClose/>'*/}
+        {/*}*/}
+        {/*>*/}
+          {/*{options.map((option, key) => {*/}
+            {/*return (<SpeedDialItem*/}
+              {/*key={ key }*/}
+              {/*label={ option.label }*/}
+              {/*fabContent={ option.fabContent }*/}
+              {/*onTouchTap={ option.onTouchTap }*/}
+            {/*/>);*/}
+          {/*})}*/}
+
+          {/*<SpeedDialItem*/}
+            {/*label='new page'*/}
+            {/*fabContent={ '<NewPageIcon/>' }*/}
+            {/*onTouchTap={ this.startNewPage }*/}
+          {/*/>*/}
+
+        {/*</SpeedDial>*/}
       </div>
     );
   }
 }
 
 FabButton.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.shape(
+    {
+      label     : PropTypes.any,
+      tabContent: PropTypes.any,
+      onTouchTap: PropTypes.func
+    }
+  )),
   color   : PropTypes.string,
   label   : PropTypes.any,
   onClick : PropTypes.any,
@@ -39,52 +80,4 @@ FabButton.defaultProps = {
   children: <li/>
 };
 
-class FabButtonOption extends PureComponent {
-
-  render() {
-    const { color, onClick, tooltip, tooltipPosition, tooltipDelay, children } = this.props;
-
-    const attrs = {
-      color          : color || 'blue',
-      onClick        : onClick || '#',
-      tooltip        : tooltip || '',
-      tooltipDelay   : tooltipDelay || '50',
-      tooltipPosition: tooltipPosition || 'left'
-    };
-
-    return (
-
-      <li>
-        <a
-          onClick={ attrs.onClick }
-          className={ ['waves-effect waves-light btn-floating tooltipped', attrs.color].join(' ') }
-          data-position={ attrs.tooltipPosition }
-          data-delay={ attrs.tooltipDelay }
-          data-tooltip={ attrs.tooltip }
-        >
-          {children}
-        </a>
-      </li>
-    );
-  }
-}
-
-FabButtonOption.propTypes = {
-  color          : PropTypes.string,
-  tooltip        : PropTypes.any,
-  tooltipDelay   : PropTypes.any,
-  tooltipPosition: PropTypes.any,
-  onClick        : PropTypes.any,
-  children       : PropTypes.any
-};
-
-FabButtonOption.defaultProps = {
-  color          : null,
-  tooltip        : null,
-  tooltipDelay   : null,
-  tooltipPosition: null,
-  onClick        : null,
-  children       : <div/>
-};
-
-export { FabButton, FabButtonOption };
+export default FabButton;

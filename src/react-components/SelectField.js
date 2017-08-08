@@ -1,19 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 
 class SelectFieldInput extends PureComponent {
 
   render() {
     const { value, label, data } = this.props;
 
+      // {/*<SelectField { ...this.props } floatingLabelStyle={ style.label } floatingLabelText={ label } value={ value }>*/}
+      //   {/*{data && data.map((item, key) => (*/}
+      //     {/*<MenuItem { ...item } value={ item.value } primaryText={ item.text } key={ key }/>*/}
+      //   {/*))}*/}
+      // {/*</SelectField>*/}
     return (
-      <SelectField { ...this.props } floatingLabelStyle={ style.label } floatingLabelText={ label } value={ value }>
-        {data && data.map((item, key) => (
-          <MenuItem { ...item } value={ item.value } primaryText={ item.text } key={ key }/>
-        ))}
-      </SelectField>
+      <div>fix select field</div>
 
     );
   }
