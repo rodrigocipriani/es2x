@@ -1,29 +1,40 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-// import { Card, CardMedia } from 'material-ui/Card';
-import Card, { CardActions, CardHeader, CardContent, CardMedia } from 'material-ui/Card';
 import Sidebar from 'react-sidebar';
 import AppBar from 'material-ui/AppBar';
-import Avatar from 'material-ui/Avatar';
+import ImageAvatar from './ImageAvatar';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
+import { Container, Row, Col, Visible, Hidden, ScreenClassRender } from './Grid';
 
 
 const LARGE_SCREEN_WIDTH = 933;
-const MENU_WIDTH         = 300;
 
 const styleSheet = createStyleSheet({
-  root: {
-    marginTop: 0,
-    width    : '100%',
+  NavigationSideBar: {
+    width: 290
   },
   flex: {
     flex: 1,
   },
+  backgroundCover: {
+    backgroundRepeat  : 'no-repeat',
+    backgroundPosition: 'center',
+  },
+  avatarInfo: {
+    color        : '#ffffff',
+    background   : 'rgba(0, 0, 0, 0.3)',
+    paddingTop   : 8,
+    paddingBottom: 8
+  },
+  avatarImage: {
+    paddingTop   : 16,
+    paddingBottom: 16
+  }
 });
 
 class Navigation extends PureComponent {
@@ -41,8 +52,6 @@ class Navigation extends PureComponent {
   }
 
   handleToggle = () => this.setState({ isOpen: !this.state.isOpen });
-
-  handleClose = () => this.setState({ isOpen: false });
 
   // utilizar metodos abaixo caso queira controlar onResize
   // componentWillMount() {
@@ -63,67 +72,52 @@ class Navigation extends PureComponent {
 
   render() {
     const {
-      children,
-      topMenuTitle,
-      sideMenu,
-      avatarImg,
-      avatarTitle,
-      avatarSubTitle,
-      sideMenuHeaderBg,
-      sideMenuFooter,
-      classes
-    } = this.props;
+            children,
+            topMenuTitle,
+            sideMenu,
+            avatarImg,
+            avatarTitle,
+            avatarSubTitle,
+            sideMenuHeaderBg,
+            sideMenuFooter,
+            classes
+          }                         = this.props;
     const { isOpen, isLargeScreen } = this.state;
 
     return (
       <div className='Navigation'>
-        {/* <AppBar*/}
-        {/* className='app-bar'*/}
-        {/* // title={ topMenuTitle }*/}
-        {/* // onLeftIconButtonTouchTap={ this.handleToggle }*/}
-        {/* style={ isOpen && isLargeScreen ? style.appBarMenuOpen : {} }*/}
-        {/* />*/}
-        <AppBar position='static'>
-          <Toolbar>
-            <IconButton color='contrast' aria-label='Menu' onClick={ this.handleToggle }>
-              <MenuIcon/>
-            </IconButton>
-            <Typography type='title' color='inherit' className={ classes.flex }>
-              Title
-            </Typography>
-            <Button color='contrast'>Login</Button>
-          </Toolbar>
-        </AppBar>
         <Sidebar
           sidebar={
-            <div style={ { width: MENU_WIDTH } }>
-              <Card>
-                <CardMedia
-                  style={ { height: 150 } }
-                  // overlayContentStyle={ { height: '100%', verticalAlign: 'bottom' } }
-                  // overlayStyle={ {
-                  //   background        : `url(${ sideMenuHeaderBg })`,
-                  //   backgroundPosition: 'center',
-                  //   backgroundSize    : 'cover'
-                  // } }
-                  // overlay={
-                  //   <div className='avatarInfo'>
-                  //     <Avatar src={ avatarImg }/>
-                  //     <br/>
-                  //     <a href='#!name'><span className='white-text name'>{avatarTitle}</span></a>
-                  //     <br/>
-                  //     <a href='#!email'><span className='white-text email'>{avatarSubTitle}</span></a>
-                  //   </div>
-                  // }
-                >
-                  {/* <img role='presentation' className='background-cover' src={ sideMenuHeaderBg }/>*/}
-                </CardMedia>
-              </Card>
+            <div className={ classes.NavigationSideBar }>
+              <div
+                className={ classes.backgroundCover }
+                style={ { backgroundImage: `url(${ sideMenuHeaderBg })` } }
+              >
+                <Container className={ classes.avatarImage }>
+                  <Row>
+                    <Col xs={ 12 }>
+                      <ImageAvatar src={ avatarImg }>U</ImageAvatar>
+                    </Col>
+                  </Row>
+                </Container>
+                <Container className={ classes.avatarInfo }>
+                  <Row>
+                    <Col xs={ 12 }>
+                      <Typography type='body1' style={ { color: '#ffffff' } }>
+                        {avatarTitle}
+                        <br/>
+                        {avatarSubTitle}
+                      </Typography>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+              <div>
+                {sideMenu}
+              </div>
               <div style={ { position: 'absolute', bottom: 0, width: '100%' } }>
                 <div style={ { width: '100%', textAlign: 'right' } }>{sideMenuFooter}</div>
               </div>
-
-              {sideMenu}
             </div>
           }
           docked={ isLargeScreen && isOpen }
@@ -131,25 +125,32 @@ class Navigation extends PureComponent {
           open={ isOpen }
           onSetOpen={ state => this.setState({ isOpen: state }) }
         >
-          <div className='app-content'>
+          <div className='NavigationTopBar'>
+            <AppBar position='static'>
+              <Toolbar>
+                <IconButton onClick={ this.handleToggle } color='contrast' aria-label='Menu'>
+                  <MenuIcon/>
+                </IconButton>
+                <Typography type='title' color='inherit' className={ classes.flex }>
+                  {topMenuTitle}
+                </Typography>
+                <Button color='contrast'>Login</Button>
+              </Toolbar>
+            </AppBar>
+          </div>
+
+          <div className='NavigationContent'>
             { children }
           </div>
+
         </Sidebar>
       </div>
     );
   }
 }
 
-const style = {
-  contentMenuOpen: {
-    paddingLeft: MENU_WIDTH,
-  },
-  appBarMenuOpen: {
-    left: MENU_WIDTH,
-  }
-};
-
 Navigation.propTypes = {
+  classes         : PropTypes.object.isRequired,
   children        : PropTypes.element,
   showNavigation  : PropTypes.bool,
   sideMenu        : PropTypes.any,

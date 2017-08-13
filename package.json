@@ -44,6 +44,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-grid-system": "^2.9.6",
     "react-mui-speeddial": "0.0.6",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",

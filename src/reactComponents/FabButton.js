@@ -1,15 +1,27 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { withStyles, createStyleSheet } from 'material-ui/styles';
+import Button from 'material-ui/Button';
 // import { SpeedDial, SpeedDialItem } from 'react-mui-speeddial';
 
 import AddCircle from 'material-ui-icons/AddCircle';
+import Add from 'material-ui-icons/Add';
 // import NavigationClose from 'material-ui-icons/Close';
 // import NewPageIcon from 'material-ui-icons/NoteAdd';
+
+const styleSheet = createStyleSheet(theme => ({
+  button: {
+    margin  : theme.spacing.unit,
+    position: 'absolute',
+    bottom  : 0,
+    right   : 0
+  },
+}));
 
 class FabButton extends PureComponent {
 
   render() {
-    const { options, color, label, onClick, children } = this.props;
+    const { options, color, label, onClick, children, effect, position, method, classes } = this.props;
 
     const attrs = {
       color  : color || 'blue',
@@ -18,47 +30,18 @@ class FabButton extends PureComponent {
     };
 
     return (
-      <div
-        className='SpeedDial'
-        style={ {
-          position: 'absolute',
-          bottom  : 15,
-          right   : 15
-        } }
-      >
-      <AddCircle/>
-
-        {/* <SpeedDial*/}
-        {/* className='fab'*/}
-        {/* fabContentOpen={*/}
-        {/* '<ContentAdd/>'*/}
-        {/* }*/}
-        {/* fabContentClose={*/}
-        {/* '<NavigationClose/>'*/}
-        {/* }*/}
-        {/* >*/}
-        {/* {options.map((option, key) => {*/}
-        {/* return (<SpeedDialItem*/}
-        {/* key={ key }*/}
-        {/* label={ option.label }*/}
-        {/* fabContent={ option.fabContent }*/}
-        {/* onTouchTap={ option.onTouchTap }*/}
-        {/* />);*/}
-        {/* })}*/}
-
-        {/* <SpeedDialItem*/}
-        {/* label='new page'*/}
-        {/* fabContent={ '<NewPageIcon/>' }*/}
-        {/* onTouchTap={ this.startNewPage }*/}
-        {/* />*/}
-
-        {/* </SpeedDial>*/}
-      </div>
+      <Button fab color='primary' aria-label='add' className={ classes.button }>
+        <Add/>
+      </Button>
     );
   }
 }
 
 FabButton.propTypes = {
+  effect  : PropTypes.string,
+  position: PropTypes.string,
+  method  : PropTypes.string,
+
   options: PropTypes.arrayOf(PropTypes.shape(
     {
       label     : PropTypes.any,
@@ -73,10 +56,13 @@ FabButton.propTypes = {
 };
 
 FabButton.defaultProps = {
+  effect  : 'zoomin',
+  position: 'br',
+  method  : 'hover',
   color   : null,
   label   : null,
   onClick : null,
   children: <li/>
 };
 
-export default FabButton;
+export default withStyles(styleSheet)(FabButton);

@@ -5,24 +5,37 @@ import Paper from 'material-ui/Paper';
 class PaperComponent extends PureComponent {
 
   render() {
-    const { children, className, elevation } = this.props;
+    const { children, className, elevation, padding, backgroundColor } = this.props;
 
     const elevationProp = elevation || 0;
 
-    return <Paper { ...className } elevation={ elevationProp } style={ { padding: 16 } }>{children}</Paper>;
+    return (
+      <Paper
+        { ...className }
+        elevation={ elevationProp }
+        style={ { padding, backgroundColor } }
+      >
+
+        {children}
+      </Paper>
+    );
   }
 }
 
 PaperComponent.propTypes = {
-  children : PropTypes.any,
-  elevation: PropTypes.number,
-  className: PropTypes.string
+  children       : PropTypes.any,
+  elevation      : PropTypes.number,
+  padding        : PropTypes.number,
+  backgroundColor: PropTypes.string,
+  className      : PropTypes.string
 };
 
 PaperComponent.defaultProps = {
-  children : null,
-  elevation: null,
-  className: ''
+  children       : null,
+  elevation      : null,
+  padding        : 16,
+  backgroundColor: 'transparent',
+  className      : ''
 };
 
 export default PaperComponent;
