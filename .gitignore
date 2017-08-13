@@ -7,7 +7,7 @@ npm-debug.log
 package-lock.json
 yarn-lock.json
 node_modules
-helpers/
-react/
-reactAuth/
-reactComponents/
+/helpers/
+/react/
+/reactAuth/
+/reactComponents/
