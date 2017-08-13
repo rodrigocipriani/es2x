@@ -51,16 +51,19 @@ const storeCreator = (reducers, props) => {
     });
 
     promise.then(result => {
-      // store.dispatch({
-      //   type   : storeActionTypes.REQUEST_SUCCESS,
-      //   payload: { type, data: result.data || result },
-      // });
       store.dispatch({
         type,
-        payload: result.data || result,
+        payload : result.data || result,
+        complete: true,
         ...args
       });
     }).catch(err => {
+      store.dispatch({
+        type,
+        payload: err,
+        error  : true,
+        ...args
+      });
       store.dispatch({
         type   : storeActionTypes.REQUEST_ERROR,
         payload: { type, message: err.msg, error: err },

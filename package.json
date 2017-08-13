@@ -1,6 +1,6 @@
 {
   "name": "es2x",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "description": "Ecma Script Helpers, Tools, Components, etc.",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,7 @@
   "homepage": "https://github.com/rodrigocipriani/es2x#readme",
   "dependencies": {
     "autoprefixer": "^7.1.2",
+    "deepmerge": "^1.5.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "html-webpack-plugin": "^2.29.0",
     "material-ui": "next",
@@ -51,6 +52,7 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "typeface-roboto": "0.0.35",
     "webpack": "^2.7.0",
     "webpack-bundle-analyzer": "^2.8.3",
     "webpack-dashboard": "^0.4.0",
@@ -78,7 +80,6 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-sass": "^3.1.0"
+    "gulp-babel": "^6.1.2"
   }
 }
