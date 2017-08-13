@@ -6,7 +6,6 @@ import ImageAvatar from './ImageAvatar';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import { Container, Row, Col, Visible, Hidden, ScreenClassRender } from './Grid';
@@ -74,6 +73,7 @@ class Navigation extends PureComponent {
     const {
             children,
             topMenuTitle,
+            topMenuContent,
             sideMenu,
             avatarImg,
             avatarTitle,
@@ -134,7 +134,7 @@ class Navigation extends PureComponent {
                 <Typography type='title' color='inherit' className={ classes.flex }>
                   {topMenuTitle}
                 </Typography>
-                <Button color='contrast'>Login</Button>
+                {topMenuContent}
               </Toolbar>
             </AppBar>
           </div>
@@ -155,6 +155,7 @@ Navigation.propTypes = {
   showNavigation  : PropTypes.bool,
   sideMenu        : PropTypes.any,
   topMenuTitle    : PropTypes.any,
+  topMenuContent  : PropTypes.any,
   sideMenuTitle   : PropTypes.any,
   sideMenuFooter  : PropTypes.any,
   sideMenuHeaderBg: PropTypes.string,
@@ -167,6 +168,7 @@ Navigation.defaultProps = {
   children        : null,
   showNavigation  : false,
   topMenuTitle    : '',
+  topMenuContent  : '',
   sideMenuTitle   : '',
   sideMenuFooter  : null,
   sideMenu        : null,
